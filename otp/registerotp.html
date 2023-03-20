@@ -1,0 +1,324 @@
+<!DOCTYPE html>
+<html>
+   <head>
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width, initial-scale=1">
+      <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.4.1/dist/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+      <script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+      <!-- <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css"> -->
+      <link rel="stylesheet" type="text/css" href="styles1.css">
+      <!-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/css/all.min.css"> -->
+      <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/css/all.min.css">
+      <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+     
+      <title></title>
+   </head>
+   <body>
+      
+      <section class="gradient-custom">
+         <div class="container py-5 h-100 ">
+            <form action="test.php" name="myForm" onsubmit="return validateform()" method="post" />
+               <div class="row">
+                  <div class="card mx-auto p-3">
+                     <h3 >REGISTER</h3>
+                     <div class="col">
+                      <div class="form-group">
+                              <input type="text" id="fname" name="name" class="form-control f" placeholder="Name" required onkeypress = "return  (event.charCode > 96 && event.charCode < 123) || (event.charCode > 64 && event.charCode < 91) || (event.charCode == 32)" autocomplete="off">
+                              <span id=username class="text-danger font-weight-bold"></span>
+                           <span id="username" class="userName"></span>
+                        </div>
+                        <div class="form-group">
+                           <input type="email" id="Email" class="form-control f" placeholder="Email" required required onkeypress = "return">
+                           <span id="Email" class="Email"></span>
+                        </div>
+                       
+                        <div class="form-group">
+                           <input type="text" type="Number" id="Phone" onkeyup = "mobilevali()" class="form-control f" placeholder="Phone No" required maxlength="10"id="mobile"name="mobile"required >
+                           <span id=confirmphone class=" text-center sfont-weight-bold"></span>
+
+                           <div class="form-group">
+                              <i class="far fa-eye passeye" id="togglePassword" style=""></i>
+
+                             <input type="password" name="password" onkeyup="validatepass1()" id="password" class="form-control f"
+                                 placeholder="Password" name="psw" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}" title="Must contain at least one number and one uppercase and lowercase letter, and at least 8 or more characters" maxlength="40" required onfocusout="passwordValidation()" > 
+                              <div class="input-help">
+
+                                 <!-- <span style="display:none;" id="1-letter"  class="l">•<strong style="color:red;">At least one lower case letter</strong></span>
+                                 <span style="display:none;" id="1-number"class="l">•<strong style="color:red;">At least one number</strong></span>
+                                 <span style="display:none;" id="pwd-length" class="l">•<strong style="color:red;">At least 8 characters long</strong></span>
+                                 <span style="display:none;" id="cap" class="l">•<strong style="color:red;">At least one uppercase</strong></span>
+                                 <span style="display:none;" id="q"   class="l">•<strong style="color:red;">At least one Special character</strong></span> -->
+                              </div>
+
+                               <div id="div4"></div>
+                           </div>
+                           <div class="form-group">
+                              <input type="password" name="Cpassword" onkeyup="validatepass1()" class="form-control f" placeholder="Confirm Password"id="Cpassword" name="Cpassword" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}" title="Must contain at least one number and one uppercase and lowercase letter, and at least 8 or more characters"  maxlength="20" required onkeyup="passcheck()">
+                              <div style="position: absolute;" >
+                                 <span style="color:red;    color: red;
+                                  " id="Cpass"      class="red"></span>
+                              </div>
+                              <div id="div6"></div>
+                           </div>   
+
+                      
+                           <button type="submit" id="submit" value="submit" onkeyup = "mobilevali()" class="submit btn btn-primary text-dark btn-lg btn-block">REGISTER</button>
+                           <div id="otp" class="inputs d-flex flex-row justify-content-center mt-2"
+                    onkeypress = "return   (event.charCode > 47 && event.charCode < 58)">  
+                       <input class="m-2 text-center form-control rounded otp" type="text" id="otp" maxlength="1"oninput='digitValidate(this)' onkeyup="tabChange(1)">
+                       <input class="m-2 text-center form-control rounded otp" type="text" id="otp" maxlength="1" oninput='digitValidate(this)' onkeyup="tabChange(2)"/> 
+                       <input class="m-2 text-center form-control rounded otp" type="text" id="otp" maxlength="1" oninput='digitValidate(this)' onkeyup="tabChange(3)"/> 
+                       <input class="m-2 text-center form-control rounded otp" type="text" id="otp" maxlength="1" oninput='digitValidate(this)' onkeyup="tabChange(4)"/> 
+                       <input class="m-2 text-center form-control rounded otp" type="text" id="otp" maxlength="1" oninput='digitValidate(this)' onkeyup="tabChange(5)"/> 
+                       <input class="m-2 text-center form-control rounded otp" type="text" id="otp" maxlength="1" oninput='digitValidate(this)' onkeyup="tabChange(6)"/>
+                    </div>
+                         
+<!-- 
+                           <div class="row d-flex justify-content-center mt-4">
+                              <input type="otp"class="otp  text-center" maxlength="1">
+                              <input type="otp" class="otp text-center" maxlength="1">
+                              <input type="otp" class="otp text-center" maxlength="1">
+                              <input type="otp" class="otp text-center" maxlength="1"> 
+                              <input type="otp" class="otp text-center" maxlength="1">
+                              <input type="otp" class="otp text-center" maxlength="1">
+                           </div> -->
+                           <div class="or d-flex justify-content-center mt-2">
+                              <p>OR</p>
+                           </div>
+                             <button type="button" class="submit btn btn-primary text-dark btn-lg btn-block"><i class="fa fa-facebook-square fb" aria-hidden="true"></i> 
+                         Login With Facebook</button>
+                   
+                           
+
+                          <!--  <i class="fa-brands fa-square-facebook"></i> -->
+                      
+                       
+                       
+                     </div>
+                  </div>
+               </div>
+            </form>
+         </div>
+      </section>
+   </body>
+     <script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+   <script>
+      function validate() 
+      {
+      if(document.getElementById("ddlList").value == "")
+      {
+        alert("Please select value"); // prompt user
+        document.getElementById("ddlList").focus(); //set focus back to control
+        return false;
+      }
+      
+      };
+      
+      function mobilevali(){
+        let mob_object = document.getElementById("Phone");
+       
+        if((/^[6-9]\d{9}$/.test(mob_object.value) == false) || (mob_object.value.length >10)){
+            document.getElementById("confirmphone").style.color = "red";
+            document.getElementById("confirmphone").innerHTML = "Invalid Phone No";
+        }
+        else{
+            document.getElementById("confirmphone").style.color = "green";
+            document.getElementById("confirmphone").innerHTML = "";
+             var pattern=/^[0-9]{10}$/
+        }
+      
+      } 
+
+
+       const togglePassword = document.querySelector('#togglePassword');
+      const password = document.querySelector('#password');
+      
+      
+      togglePassword.addEventListener('click', function (e) {
+       // toggle the type attribute
+       const type = password.getAttribute('type') === 'password' ? 'text' : 'password';
+       password.setAttribute('type', type);
+       // toggle the eye slash icon
+       this.classList.toggle('fa-eye-slash');
+      });
+       
+      
+      
+       $(document).ready(function () {
+          $("#Cpassword").bind("keyup change", function () {
+        passcheck($("#password").val(), $("#Cpassword").val());
+        });
+       });   
+      
+      // ************************
+      
+      // 
+      
+      function passcheck(mypass, myconfirmpass){
+        if(mypass!=myconfirmpass){
+        $("#submit").removeAttr("onclick");
+        $("#Cpass").show();
+        $("#Cpass").html('<div class="text-red">Password did not matched!</div>');
+        document.getElementById('submit').disabled = true;
+        }
+      
+        else {
+        $("#submit").removeAttr("onclick");
+        $("#Cpass").show();
+        $("#Cpass").html('');
+      
+        
+        document.getElementById('submit').disabled = false;
+        }
+      }
+
+
+      function validatepass1(){
+var confirm_password = document.getElementById("Cpassword").value;
+var pass = document.getElementById('password').value;
+if(confirm_password != pass){
+    document.getElementById('div6').innerHTML="";
+    document.getElementById('div6').style.color="red";
+     document.getElementById('submit').disabled = true;
+}
+else{
+  document.getElementById('div6').innerHTML="";
+  document.getElementById('div6').style.color="";
+   document.getElementById('submit').disabled = false;
+}
+}
+      
+      
+      
+      
+      
+      function passwordValidation(){
+               // debugger
+               //e.preventDefault()
+               let pwd_object = document.getElementById("password");
+               // check number
+               if(/([0-9])/.test(pwd_object.value) == false){
+                   ele = document.getElementById("1-number")
+                   ele.style.color = "red";
+                   // ele.style.background = cross_sign;
+                   
+               }
+               else{
+                   document.getElementById("1-number").style.display='none';
+                   // document.getElementById("1-number").style.background = tick_sign;
+               }
+               // check letter
+               if(/([a-z])/.test(pwd_object.value) == false){
+                   document.getElementById("1-letter").style.display = 'inline';
+                   // document.getElementById("1-letter").style.background = cross_sign;
+              }else{
+                   document.getElementById("1-letter").style.display='none';
+                   // document.getElementById("1-letter").style.background = tick_sign;
+               }
+      
+      
+               if(/([A-Z])/.test(pwd_object.value) == false){
+                   document.getElementById("cap").style.display = 'inline';
+                   // document.getElementById("1-letter").style.background = cross_sign;
+              }else{
+                   document.getElementById("cap").style.display='none';
+                   // document.getElementById("1-letter").style.background = tick_sign;
+               }
+      
+      
+      
+      
+               if(/([$&+,:;=?@#|'<>.^*()%!-])/.test(pwd_object.value) == false){
+                   document.getElementById("q").style.display = 'inline';
+                   // document.getElementById("1-letter").style.background = cross_sign;
+              }else{
+                   document.getElementById("q").style.display='none';
+                   // document.getElementById("1-letter").style.background = tick_sign;
+               }
+      
+      
+      
+      
+         
+      
+               // check length
+               if(pwd_object.value.length < 8){
+                   document.getElementById("pwd-length").style.display = 'inline';
+                   // document.getElementById("pwd-length").style.background = cross_sign;
+               }
+               else{
+                   document.getElementById("pwd-length").style.display='none';
+                   // document.getElementById("pwd-length").style.background = tick_sign;
+                   
+               }
+           }
+      
+          // document.addEventListener("DOMContentLoaded", function(event) {
+
+// function OTPInput() {
+// const inputs = document.querySelectorAll('#otp > *[id]');
+// for (let i = 0; i < inputs.length; i++) { 
+//    inputs[i].addEventListener('keydown', function(event) { if (event.key==="Backspace" ) 
+//       { inputs[i].value='' ; if (i !==0) inputs[i - 1].focus(); } else { 
+//          if (i===inputs.length - 1 && inputs[i].value !=='' ) { return true; } 
+//          else if (event.keyCode> 47 && event.keyCode < 58) { inputs[i].value=event.key; 
+//        if (i !==inputs.length - 1) inputs[i + 1].focus(); event.preventDefault(); } 
+//       else if (event.keyCode> 64 && event.keyCode < 91) { inputs[i].value=String.fromCharCode(event.keyCode); 
+//       if (i !==inputs.length - 1) inputs[i + 1].focus(); event.preventDefault(); } } }); } } OTPInput(); });
+
+              var digitValidate=(ele)=>{
+      console.log(ele.value)
+      ele.value=ele.value.replace(/[^0-9]/g,'');
+    }
+
+    var tabChange=function (val){
+      let ele=document.querySelectorAll('.otp')
+      if(ele[val-1].value !=''){
+        ele[val].focus();
+      }else if(ele[val-1].value ==''){
+        ele[val-2].focus();
+      }
+    }
+
+
+
+          $(function() {
+    $("input[name='name']").on('input', function(e) {
+    console.log('==>' , $(this).val().charAt(3))
+    if ($(this).val().indexOf("  ") != -1) {
+      $(this).val($(this).val().replace("  ", " "));
+      // $(this).val($(this).val().replace(".", ""));
+    } else {
+      $(this).val($(this).val().replace(".", ""));
+    }
+     });
+    })
+
+    // const fname = document.querySelector('#name');
+    // fname.addEventListener('input',() => {
+      fname.value = fname.value ? fname.value.trimStart() : ''; 
+    // })
+    
+
+$(function(){
+$("#Email").on('keypress',function(e) {
+    if (e.which == 32) 
+        return false;
+
+    });
+});
+ 
+ $(function(){
+$("#Phone").on('keypress',function(e) {
+    if (e.which == 32) 
+        return false;
+
+    });
+});
+
+
+      
+      
+      
+   </script>
+</html>
